@@ -24,9 +24,6 @@ pipeline {
      stage('Send app') {
       steps {
         sh '''scp /home/slava/HelloWorld/Hello.jar 192.168.0.107:/home/slava
-              ssh 192.168.0.107
-              cd /home/slava
-              ./Hello.jar
            '''
       }
     }
