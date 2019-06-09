@@ -14,15 +14,19 @@ pipeline {
       steps {
         sh '''cd /home/slava/HelloWorld
               javac HelloWorld.java
+              echo "Main-class: HelloWorld" > 'MANIFEST.MF'
+              jar cvmf MANIFEST.MF Hello.jar HelloWorld.class
+              chmod +x Hello.jar
+              ./Hello.jar
            '''
       }
     }
      stage('Send app') {
       steps {
-        sh '''scp /home/slava/HelloWorld/HelloWorld.class 192.168.0.107:/home/slava
+        sh '''scp /home/slava/HelloWorld/Hello.jar 192.168.0.107:/home/slava
               ssh 192.168.0.107
               cd /home/slava
-              java HelloWorld
+              ./Hello.jar
            '''
       }
     }
