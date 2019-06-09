@@ -20,7 +20,7 @@ pipeline {
      stage('Send app') {
       steps {
         sh '''scp /home/slava/HelloWorld/HelloWorld.class 192.168.0.107:/home/slava
-              ssh '192.168.0.107'
+              ssh 192.168.0.107
               cd /home/slava
               java HelloWorld
            '''
