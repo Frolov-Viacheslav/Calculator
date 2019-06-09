@@ -12,7 +12,10 @@ pipeline {
   stages {
     stage('Build app') {
       steps {
-        sh '''cd /home/slava/HelloWorld
+        sh '''
+              cd /home/jenkins
+              git clone "https://github.com/Frolov-Viacheslav/HelloWorld.git"
+              cd /home/jenkins/HelloWorld
               javac HelloWorld.java
               echo "Main-class: HelloWorld" > 'MANIFEST.MF'
               jar cvmf MANIFEST.MF Hello.jar HelloWorld.class
@@ -23,7 +26,8 @@ pipeline {
     }
      stage('Send app') {
       steps {
-        sh '''scp /home/slava/HelloWorld/Hello.jar 192.168.0.107:/home/slava
+        sh '''scp /home/jenkins/HelloWorld/Hello.jar 192.168.0.107:/home/slava
+              rm -r /home/jenkins/HelloWorld
            '''
       }
     }
