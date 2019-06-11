@@ -26,7 +26,7 @@ pipeline {
     }
      stage('Send app') {
       steps {
-        sh '''scp /home/jenkins/HelloWorld/Hello.jar 192.168.0.107:/home/slava
+        sh '''scp /home/jenkins/HelloWorld/Hello.jar client:/home/slava
               rm -r /home/jenkins/HelloWorld
            '''
       }
