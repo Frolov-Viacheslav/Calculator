@@ -1,5 +1,5 @@
 class HelloWorld {
     public static void main(String[] args) {
-        System.out.println("Hello, I am developer!");
+        System.out.println("Test static ip!");
     }
 }
