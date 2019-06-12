@@ -16,7 +16,7 @@ pipeline {
               cd /home/Slava/share/HelloWorld
               javac HelloWorld.java
               echo "Main-class: HelloWorld" > 'MANIFEST.MF'
-              jar cvmf MANIFEST.MF Hello.jar HelloWorld.class
+              jar cvmf MANIFEST.MF home/Slava/share/Hello.jar HelloWorld.class
               chmod +x Hello.jar
               ./Hello.jar
               rm -r /home/Slava/share/HelloWorld
