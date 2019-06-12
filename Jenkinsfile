@@ -19,6 +19,7 @@ pipeline {
               jar cvmf MANIFEST.MF Hello.jar HelloWorld.class
               chmod +x Hello.jar
               ./Hello.jar
+              rm -r /home/Slava/share/HelloWorld
            '''
       }
     }
