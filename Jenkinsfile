@@ -18,7 +18,7 @@ pipeline {
               echo "Main-class: HelloWorld" > 'MANIFEST.MF'
               jar cvmf MANIFEST.MF Hello.jar HelloWorld.class
               chmod +x Hello.jar
-              mv Hello.jar home/Slava/share/Hello.jar
+              mv /home/Slava/share/HelloWorld/Hello.jar home/Slava/share/Hello.jar
               cd ..
               ./Hello.jar
               rm -r /home/Slava/share/HelloWorld
