@@ -2,10 +2,12 @@
 properties([disableConcurrentBuilds()]) # Ждет окончания предыдущей сборки (нельзя несколько одновременно)
 pipeline {
   agent{
-    label 'master' # Выполнять сборку Jenkins master
+    # Выполняет сборку Jenkins master
+    label 'master' 
   }
  options {
-    timestamps() # Выводить в логе сборки время каждой операции
+   # Выводить в логе сборки время каждой операции
+   timestamps() 
   }
   stages {
     stage('Build app') {
@@ -23,7 +25,8 @@ pipeline {
       }
     }
   }
-  post { # Выполняет в конце сборки (всегда)
+  post { 
+        # Выполняет в конце сборки (всегда)
         always { 
             sh  "rm -r HelloWorld"
         }
