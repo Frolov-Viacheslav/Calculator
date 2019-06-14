@@ -4,7 +4,7 @@ properties([disableConcurrentBuilds()])
 pipeline {
   agent{
     // Выполняет сборку Jenkins master
-    label 'master' 
+    label 'slave01' 
   }
  options {
    // Выводить в логе сборки время каждой операции
