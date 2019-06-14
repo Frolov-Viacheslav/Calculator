@@ -1,18 +1,19 @@
 #!groovy
-properties([disableConcurrentBuilds()]) # Ждет окончания предыдущей сборки (нельзя несколько одновременно)
+// Ждет окончания предыдущей сборки (нельзя несколько одновременно)
+properties([disableConcurrentBuilds()]) 
 pipeline {
   agent{
-    # Выполняет сборку Jenkins master
+    // Выполняет сборку Jenkins master
     label 'master' 
   }
  options {
-   # Выводить в логе сборки время каждой операции
+   // Выводить в логе сборки время каждой операции
    timestamps() 
   }
   stages {
     stage('Build app') {
       steps {
-        # shell скрипт
+        // shell скрипт
         sh ''' 
               git clone "https://github.com/Frolov-Viacheslav/HelloWorld.git"
               cd HelloWorld
@@ -26,7 +27,7 @@ pipeline {
     }
   }
   post { 
-        # Выполняет в конце сборки (всегда)
+        // Выполняет в конце сборки (всегда)
         always { 
             sh  "rm -r HelloWorld"
         }
