@@ -3,8 +3,10 @@ properties([disableConcurrentBuilds()])
 
 pipeline {
   agent{
+    // Выполнит сборку на Jenkins slave под именем slave02
     label 'slave02'
   }
+  // Jenkins опрашивает Github каждую минуту
  triggers {pollSCM('* * * * *')} 
  options {
     timestamps()
