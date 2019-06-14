@@ -17,7 +17,7 @@ pipeline {
               echo "Main-class: HelloWorld" > 'MANIFEST.MF'
               jar cvmf MANIFEST.MF Hello.jar HelloWorld.class
               chmod +x Hello.jar
-              java Main
+              java -jar Hello.jar
            '''
       }
     }
