@@ -18,7 +18,6 @@ pipeline {
               jar cvmf MANIFEST.MF Hello.jar HelloWorld.class
               chmod +x Hello.jar
               java -jar Hello.jar
-              scp Hello.jar  172.17.0.1:/home/Slava/share
            '''
       }
     }
