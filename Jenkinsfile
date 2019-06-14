@@ -24,7 +24,7 @@ pipeline {
   }
   post { 
         always { 
-            sh  rm -r HelloWorld
+            sh  "rm -r HelloWorld"
         }
     }
 }
