@@ -11,15 +11,13 @@ pipeline {
     stage('Build app') {
       steps {
         sh '''
-              cd /home/Slava/share
               git clone "https://github.com/Frolov-Viacheslav/HelloWorld.git"
-              cd /home/Slava/share/HelloWorld
+              cd HelloWorld
               javac HelloWorld.java
               echo "Main-class: HelloWorld" > 'MANIFEST.MF'
-              jar cvmf MANIFEST.MF /home/Slava/share/Hello.jar HelloWorld.class
-              cd ..
+              jar cvmf MANIFEST.MF Hello.jar HelloWorld.class
               chmod +x Hello.jar
-              ./Hello.jar
+              java Hello
               rm -r /home/Slava/share/HelloWorld
            '''
       }
