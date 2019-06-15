@@ -1,0 +1,50 @@
+---
+- name: Test_git
+  hosts: Client
+
+
+  tasks:
+     - name: Install git
+       apt:
+         name: git
+         state: latest
+         force_apt_get: yes
+     - name: Install jar wrapper
+       apt:
+         name: jarwrapper
+         state: latest
+         force_apt_get: yes
+     - git:
+         repo: "https://github.com/Frolov-Viacheslav/HelloWorld.git"
+         dest: /home/slava/HelloWorld
+     - name: Compiling java app
+       shell: javac HelloWorld.java
+       args:
+         chdir: /home/slava/HelloWorld/
+     - lineinfile:
+         path: /home/slava/HelloWorld/MANIFEST.MF
+         line: 'Main-class: HelloWorld'
+         create: yes
+     - name: Creating jar file
+       shell: jar cvmf MANIFEST.MF Hello.jar HelloWorld.class
+       args:
+         chdir: /home/slava/HelloWorld/
+     - name: Change mod and move file
+       copy:
+         src: /home/slava/HelloWorld/Hello.jar
+         dest: /home/slava/Hello.jar
+         mode: +x
+     - name: Run app
+       shell: ./Hello.jar
+       register: shell_result
+       args:
+         chdir: /home/slava/ 
+     - debug:
+         var: shell_result.stdout_lines
+
+     - name: Delete git directory (HelloWorld)
+       file:
+         path: /home/slava/HelloWorld
+         state: absent
+         #recurse: yes
+
