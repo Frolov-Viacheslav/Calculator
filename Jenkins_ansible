@@ -1,0 +1,27 @@
+#!groovy
+// Ждет окончания предыдущей сборки (нельзя несколько одновременно)
+properties([disableConcurrentBuilds()]) 
+pipeline {
+  agent{
+    // Выполняет сборку Jenkins master
+    label 'master' 
+  }
+ options {
+   // Выводить в логе сборки время каждой операции
+   timestamps() 
+  }
+  stages {
+    stage('Build app') {
+      steps {
+        // shell скрипт
+        sh 'ansible-playbook playbook.yml'
+      }
+    }
+  }
+  post { 
+        // Выполняет в конце сборки (всегда)
+        always { 
+            echo  "Ansible + Jenkins"
+        }
+    }
+}
