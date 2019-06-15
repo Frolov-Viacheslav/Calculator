@@ -9,7 +9,7 @@ pipeline {
   }
   stages {
     stage('Build app') {
-      agent{label 'slave01'}
+      agent { label 'slave01' }
       steps {
         // shell скрипт
         sh ''' 
@@ -24,7 +24,7 @@ pipeline {
       }
     }
     stage('Copy file') {
-      agent{label 'master'}
+      agent { label 'master' }
       steps {
         // shell скрипт
         sh ''' 
