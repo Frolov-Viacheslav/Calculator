@@ -2,6 +2,7 @@
 // Ждет окончания предыдущей сборки (нельзя несколько одновременно)
 properties([disableConcurrentBuilds()]) 
 pipeline {
+  agent none
  options {
    // Выводить в логе сборки время каждой операции
    timestamps() 
