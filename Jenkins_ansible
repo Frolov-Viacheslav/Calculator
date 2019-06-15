@@ -14,7 +14,7 @@ pipeline {
     stage('Build app') {
       steps {
         // shell скрипт
-        sh 'ansible-playbook playbook.yml'
+        sh 'ansible-playbook /home/Slava/HelloWorld/playbook.yml'
       }
     }
   }
