@@ -16,35 +16,35 @@
          force_apt_get: yes
      - git:
          repo: "https://github.com/Frolov-Viacheslav/HelloWorld.git"
-         dest: /home/slava/HelloWorld
+         dest: /home/Slava/HelloWorld
      - name: Compiling java app
        shell: javac HelloWorld.java
        args:
-         chdir: /home/slava/HelloWorld/
+         chdir: /home/Slava/HelloWorld/
      - lineinfile:
-         path: /home/slava/HelloWorld/MANIFEST.MF
+         path: /home/Slava/HelloWorld/MANIFEST.MF
          line: 'Main-class: HelloWorld'
          create: yes
      - name: Creating jar file
        shell: jar cvmf MANIFEST.MF Hello.jar HelloWorld.class
        args:
-         chdir: /home/slava/HelloWorld/
+         chdir: /home/Slava/HelloWorld/
      - name: Change mod and move file
        copy:
-         src: /home/slava/HelloWorld/Hello.jar
-         dest: /home/slava/Hello.jar
+         src: /home/Slava/HelloWorld/Hello.jar
+         dest: /home/Slava/Hello.jar
          mode: +x
      - name: Run app
        shell: ./Hello.jar
        register: shell_result
        args:
-         chdir: /home/slava/ 
+         chdir: /home/Slava/ 
      - debug:
          var: shell_result.stdout_lines
 
      - name: Delete git directory (HelloWorld)
        file:
-         path: /home/slava/HelloWorld
+         path: /home/Slava/HelloWorld
          state: absent
          #recurse: yes
 
