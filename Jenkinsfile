@@ -33,11 +33,10 @@ pipeline {
       }
     }
   }
-  post { 
-       agent{label 'slave01'}
+  //post { 
         // Выполняет в конце сборки (всегда)
-        always { 
-            sh  "rm -r HelloWorld"
-        }
-    }
+       // always { 
+           // sh  "rm -r HelloWorld"
+       // }
+    //}
 }
