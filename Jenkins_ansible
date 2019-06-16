@@ -11,10 +11,9 @@ pipeline {
        stage('launch slave') {
        agent{ label 'slave01' }
       steps {
-          waitUntil {
+        //  waitUntil {
             build 'Ansible_node'
-            echo '123'
-          }
+        //  }
        echo "Slave"
       }
     }
