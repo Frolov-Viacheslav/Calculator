@@ -13,19 +13,23 @@ pipeline {
     stage('Build app') {
        agent{ label 'master' }
       steps {
+        def flag = false
         // shell скрипт
         //sh git clone "https://github.com/Frolov-Viacheslav/HelloWorld.git"
         sh '''
-             rm -r HelloWorld
              git clone "https://github.com/Frolov-Viacheslav/HelloWorld.git"
              ansible-playbook HelloWorld/playbook.yml
+             rm -r HelloWorld
+             flag = true
            '''
       }
     }
        stage('launch slave') {
        agent{ label 'slave01' }
       steps {
-        echo "Hello from slave"
+          waitUntil {
+            flag
+        }
       }
        }
    }
