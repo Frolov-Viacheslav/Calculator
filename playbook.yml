@@ -1,6 +1,6 @@
 ---
 - name: Test_git
-  hosts: Client
+  hosts: jenkins
 
 
   tasks:
