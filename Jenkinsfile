@@ -20,15 +20,17 @@ pipeline {
               jar cvmf MANIFEST.MF Hello.jar HelloWorld.class
               chmod +x Hello.jar
               java -jar Hello.jar
+              cp Hello.jar /var/jenkins_home
            '''
       }
     }
-    stage('Copy file') {
+    stage('Execute app') {
       agent { label 'master' }
       steps {
         // shell скрипт
         sh ''' 
-              scp 172.17.0.3:/home/jenkins/HelloWorld/Hello.jar /var/jenkins_home
+             cd /var/jenkins_home/
+             ./Hello.jar
            '''
       }
     }
