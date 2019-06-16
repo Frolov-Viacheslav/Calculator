@@ -25,7 +25,7 @@
         # dest: /home/jenkins/Hello.jar
          #mode: +x
      - name: Move file
-       shell: mv /home/jenkins/HelloWorld/Hello.jar /home/jenkins/Hello.jar
+       shell: mv /home/jenkins/HelloWorld/Hello.jar /home/jenkins/Hello.jar && chmod +x /home/jenkins/Hello.jar
      - name: Run app
        shell: java -jar Hello.jar
        register: shell_result
