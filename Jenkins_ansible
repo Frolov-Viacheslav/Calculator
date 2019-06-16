@@ -3,8 +3,7 @@
 properties([disableConcurrentBuilds()]) 
 pipeline {
   agent{
-    // Выполняет сборку Jenkins master
-    label 'master' 
+    label 'slave01' 
   }
  options {
    // Выводить в логе сборки время каждой операции
@@ -14,7 +13,7 @@ pipeline {
     stage('Build app') {
       steps {
         // shell скрипт
-        sh 'ansible-playbook /home/Slava/HelloWorld/playbook.yml'
+        sh 'ansible-playbook /home/jenkins/HelloWorld/playbook.yml'
       }
     }
   }
