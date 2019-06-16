@@ -12,23 +12,25 @@
        args:
          chdir: /home/jenkins/HelloWorld/
      - lineinfile:
-           dest: '/home/jenkins/HelloWorld/MANIFEST.MF'
+           dest: /home/jenkins/HelloWorld/MANIFEST.MF
            line: 'Main-class: HelloWorld'
            create: yes
      - name: Creating jar file
        shell: jar cvmf MANIFEST.MF Hello.jar HelloWorld.class
        args:
          chdir: /home/jenkins/HelloWorld/
-     - name: Change mod and move file
-       copy:
-         src: /home/jenkins/HelloWorld/Hello.jar
-         dest: /home/jenkins/Hello.jar
-         mode: +x
+     #- name: Change mod and move file
+      # copy:
+       #  src: /home/jenkins/HelloWorld/Hello.jar
+        # dest: /home/jenkins/Hello.jar
+         #mode: +x
+     - name: Move file
+       shell: mv /home/jenkins/HelloWorld/Hello.jar /home/jenkins/Hello.jar
      - name: Run app
        shell: java -jar Hello.jar
        register: shell_result
        args:
-         chdir: /home/jenkins/HelloWorld/ 
+         chdir: /home/jenkins/ 
      - debug:
          var: shell_result.stdout_lines
 
