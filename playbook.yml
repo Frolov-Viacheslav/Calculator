@@ -12,9 +12,9 @@
        args:
          chdir: /home/jenkins/HelloWorld/
      - lineinfile:
-         path: '/home/jenkins/HelloWorld/MANIFEST.MF'
-         line: 'Main-class: HelloWorld'
-         create: yes
+           path: '/home/jenkins/HelloWorld/MANIFEST.MF'
+           line: 'Main-class: HelloWorld'
+           create: yes
      - name: Creating jar file
        shell: jar cvmf MANIFEST.MF Hello.jar HelloWorld.class
        args:
