@@ -1,7 +1,6 @@
 #!groovy
 // Ждет окончания предыдущей сборки (нельзя несколько одновременно)
 properties([disableConcurrentBuilds()]) 
-def flag = false
 pipeline {
  agent none
  options {
@@ -10,6 +9,9 @@ pipeline {
   }
   stages {
    stage('Paralel stage') {
+     environment {
+      flag = false
+     }
     parallel {
     stage('Build app') {
        agent{ label 'master' }
