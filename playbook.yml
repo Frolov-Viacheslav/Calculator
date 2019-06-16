@@ -19,7 +19,7 @@
        shell: jar cvmf MANIFEST.MF Hello.jar HelloWorld.class
        args:
          chdir: /home/jenkins/HelloWorld/
-     - name: Change mod and move file
+     #- name: Change mod and move file
        #copy:
         # src: /home/jenkins/HelloWorld/Hello.jar
          #dest: /home/jenkins/Hello.jar
