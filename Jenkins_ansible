@@ -2,23 +2,30 @@
 // Ждет окончания предыдущей сборки (нельзя несколько одновременно)
 properties([disableConcurrentBuilds()]) 
 pipeline {
-  agent{
-    label 'slave01' 
-  }
+ agent none
  options {
    // Выводить в логе сборки время каждой операции
    timestamps() 
   }
   stages {
+    parallel {
     stage('Build app') {
+       agent{ label 'master' }
       steps {
         // shell скрипт
         sh '''
-             ansible jenkins -m git -a 'repo="https://github.com/Frolov-Viacheslav/HelloWorld.git" dest=/home/Slava/HelloWorld'
-             ansible-playbook /home/jenkins/HelloWorld/playbook.yml
+             git clone "https://github.com/Frolov-Viacheslav/HelloWorld.git"
+             ansible-playbook HelloWorld/playbook.yml
            '''
       }
     }
+       stage('launch slave') {
+       agent{ label 'slave01' }
+      steps {
+        echo "Hello from slave"
+      }
+       }
+   }
   }
   post { 
         // Выполняет в конце сборки (всегда)
