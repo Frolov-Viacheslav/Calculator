@@ -20,15 +20,15 @@
        args:
          chdir: /home/jenkins/HelloWorld/
      - name: Change mod and move file
-       copy:
-         src: /home/jenkins/HelloWorld/Hello.jar
-         dest: /home/jenkins/Hello.jar
-        # mode: +x
+       #copy:
+        # src: /home/jenkins/HelloWorld/Hello.jar
+         #dest: /home/jenkins/Hello.jar
+         #mode: +x
      - name: Run app
        shell: java -jar Hello.jar
        register: shell_result
-       args:
-         chdir: /home/jenkins/ 
+       #args:
+        # chdir: /home/jenkins/ 
      - debug:
          var: shell_result.stdout_lines
 
