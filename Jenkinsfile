@@ -30,7 +30,7 @@ pipeline {
         // shell скрипт
         sh ''' 
              cd /var/jenkins_home/
-             ./Hello.jar
+             java -jar Hello.jar
            '''
       }
     }
