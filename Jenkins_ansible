@@ -14,8 +14,8 @@ pipeline {
        agent{ label 'master' }
       steps {
         // shell скрипт
+        //sh git clone "https://github.com/Frolov-Viacheslav/HelloWorld.git"
         sh '''
-             git clone "https://github.com/Frolov-Viacheslav/HelloWorld.git"
              ansible-playbook HelloWorld/playbook.yml
            '''
       }
