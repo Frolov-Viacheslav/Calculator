@@ -27,8 +27,8 @@
      - name: Run app
        shell: java -jar Hello.jar
        register: shell_result
-       #args:
-        # chdir: /home/jenkins/ 
+       args:
+         chdir: /home/jenkins/HelloWorld/ 
      - debug:
          var: shell_result.stdout_lines
 
