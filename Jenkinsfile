@@ -28,7 +28,7 @@ pipeline {
       steps {
         // shell скрипт
         sh ''' 
-              scp 172.17.0.3:/home/jenkins/HelloWorld/Hello.jar /var/jenkins_home/
+              scp 172.17.0.3:/home/jenkins/HelloWorld/Hello.jar /var/jenkins_home
            '''
       }
     }
