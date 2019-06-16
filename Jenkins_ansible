@@ -13,6 +13,7 @@ pipeline {
       steps {
           waitUntil {
             build 'Ansible_node'
+            echo '123'
           }
        echo "Slave"
       }
