@@ -8,6 +8,7 @@ pipeline {
    timestamps() 
   }
   stages {
+   stage('Paralel stage') {
     parallel {
     stage('Build app') {
        agent{ label 'master' }
@@ -26,6 +27,7 @@ pipeline {
       }
        }
    }
+  }
   }
   post { 
         // Выполняет в конце сборки (всегда)
