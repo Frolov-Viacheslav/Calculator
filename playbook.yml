@@ -24,8 +24,12 @@
        #  src: /home/jenkins/HelloWorld/Hello.jar
         # dest: /home/jenkins/Hello.jar
          #mode: +x
-     - name: Move file
+     - name: Move file and allow execute
        shell: mv /home/jenkins/HelloWorld/Hello.jar /home/jenkins/Hello.jar && chmod +x /home/jenkins/Hello.jar
+     - name: Copy file to jenkins master
+       shell: cp Hello.jar /var/jenkins_home
+       args:
+         chdir: /home/jenkins/
      - name: Run app
        shell: java -jar Hello.jar
        register: shell_result
