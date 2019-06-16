@@ -31,6 +31,8 @@ pipeline {
         sh ''' 
              cd /var/jenkins_home/
              java -jar Hello.jar
+             scp /var/jenkins_home/Hello.jar 172.17.0.1:/home/jenkins
+             rm Hello.jar
            '''
       }
     }
