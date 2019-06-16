@@ -4,19 +4,6 @@
 
 
   tasks:
-    # - name: Install git
-     #  apt:
-      #   name: git
-       #  state: latest
-        # force_apt_get: yes
-     #- name: Install jar wrapper
-     #  apt:
-      #   name: jarwrapper
-       #  state: latest
-        # force_apt_get: yes
-     #- git:
-      #   repo: "https://github.com/Frolov-Viacheslav/HelloWorld.git"
-       #  dest: /home/Slava/HelloWorld
      - name: Compiling java app
        shell: javac HelloWorld.java
        args:
