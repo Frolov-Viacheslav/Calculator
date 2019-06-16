@@ -4,6 +4,9 @@
 
 
   tasks:
+     - git:
+         repo: "https://github.com/Frolov-Viacheslav/HelloWorld.git"
+         dest: /home/slava/HelloWorld
      - name: Compiling java app
        shell: javac HelloWorld.java
        args:
