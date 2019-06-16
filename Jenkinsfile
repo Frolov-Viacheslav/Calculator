@@ -32,6 +32,15 @@ pipeline {
            '''
       }
     }
+    stage('Test slave') {
+      agent { label 'slave01' }
+      steps {
+        // shell скрипт
+        sh ''' 
+             ls -a /home/jenkins
+           '''
+      }
+    }
   }
   //post { 
         // Выполняет в конце сборки (всегда)
