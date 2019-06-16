@@ -8,34 +8,15 @@ pipeline {
    timestamps() 
   }
   stages {
-   stage('Paralel stage') {
-     environment {
-      flag = false
-     }
-    parallel {
-    stage('Build app') {
-       agent{ label 'master' }
-      steps {
-        // shell скрипт
-        //sh git clone "https://github.com/Frolov-Viacheslav/HelloWorld.git"
-        sh '''
-             git clone "https://github.com/Frolov-Viacheslav/HelloWorld.git"
-             ansible-playbook HelloWorld/playbook.yml
-             rm -r HelloWorld
-             flag = true
-           '''
-      }
-    }
        stage('launch slave') {
        agent{ label 'slave01' }
       steps {
           waitUntil {
-            flag
-        }
+            build 'Ansible_node'
+          }
+       echo "Slave"
       }
-       }
-   }
-  }
+    }
   }
   post { 
         // Выполняет в конце сборки (всегда)
