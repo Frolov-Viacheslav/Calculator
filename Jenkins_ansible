@@ -16,6 +16,8 @@ pipeline {
         // shell скрипт
         //sh git clone "https://github.com/Frolov-Viacheslav/HelloWorld.git"
         sh '''
+             rm -r HelloWorld
+             git clone "https://github.com/Frolov-Viacheslav/HelloWorld.git"
              ansible-playbook HelloWorld/playbook.yml
            '''
       }
