@@ -16,7 +16,7 @@ pipeline {
             rm -r HelloWorld
             fi
             git clone "https://github.com/Frolov-Viacheslav/HelloWorld.git"
-            ansible-playbook HelloWorld/playbook.yml
+            ansible-playbook HelloWorld/Ansible/playbook.yml
             rm -r HelloWorld
             cd /var/jenkins_home
             java -jar Hello.jar
