@@ -1,0 +1,27 @@
+#!groovy
+//properties([disableConcurrentBuilds()])
+
+pipeline {
+  agent{
+    label 'master'
+  }
+ options {
+    timestamps()
+  }
+  stages {
+    stage('Build app') {
+      steps {
+        sh '''
+            if  [ -d HelloWorld ]; then
+            rm -r HelloWorld
+            fi
+            git clone "https://github.com/Frolov-Viacheslav/HelloWorld.git"
+            ansible-playbook HelloWorld/playbook.yml
+            rm -r HelloWorld
+            cd /var/jenkins_home
+            java -jar Hello.jar
+           '''
+      }
+    }
+  }
+}
