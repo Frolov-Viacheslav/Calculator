@@ -2,17 +2,16 @@
 // Ждет окончания предыдущей сборки (нельзя несколько одновременно)
 properties([disableConcurrentBuilds()]) 
 pipeline {
- agent none
+ agent { label 'slave01' }
  options {
    // Выводить в логе сборки время каждой операции
    timestamps() 
   }
   stages {
        stage('launch slave') {
-       agent{ label 'slave01' }
       steps {
         //  waitUntil {
-            build 'Ansible_node'
+            build 'Ansible'
         //  }
       }
     }
