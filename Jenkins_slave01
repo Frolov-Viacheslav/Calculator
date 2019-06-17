@@ -11,7 +11,7 @@ pipeline {
        stage('launch slave') {
       steps {
         //  waitUntil {
-            build 'Ansible'
+            build 'Ansible_master'
         //  }
       }
     }
