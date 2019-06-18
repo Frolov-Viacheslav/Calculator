@@ -19,7 +19,8 @@ pipeline {
             ansible-playbook HelloWorld/Ansible/playbook.yml
             rm -r HelloWorld
             cd /var/jenkins_home
-            java -jar Hello.jar
+            scp Hello.jar 172.18.0.100:/home/jenkins
+            
            '''
       }
     }
