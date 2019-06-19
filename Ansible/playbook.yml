@@ -5,7 +5,7 @@
 
   tasks:
      - git:
-         repo: "git@github.com:Frolov-Viacheslav/HelloWorld.git"
+         repo: "https://github.com/Frolov-Viacheslav/HelloWorld.git"
          dest: /home/jenkins/HelloWorld
      - name: Compiling java app
        shell: javac HelloWorld.java
