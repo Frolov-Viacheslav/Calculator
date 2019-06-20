@@ -18,11 +18,6 @@
        shell: jar cvmf MANIFEST.MF Hello.jar HelloWorld.class
        args:
          chdir: /home/jenkins/HelloWorld/
-     #- name: Change mod and move file
-      # copy:
-       #  src: /home/jenkins/HelloWorld/Hello.jar
-        # dest: /home/jenkins/Hello.jar
-         #mode: +x
      - name: Move file and allow execute
        shell: mv /home/jenkins/HelloWorld/Hello.jar /home/jenkins/Hello.jar && chmod +x /home/jenkins/Hello.jar
      - name: Copy file to jenkins master
@@ -36,7 +31,6 @@
          chdir: /home/jenkins/ 
      - debug:
          var: shell_result.stdout_lines
-
      - name: Delete git directory (HelloWorld)
        file:
          path: /home/jenkins/HelloWorld
