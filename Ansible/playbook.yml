@@ -1,5 +1,5 @@
 ---
-- name: Test_git
+- name: Build
   hosts: jenkins
 
 
@@ -42,5 +42,14 @@
        file:
          path: /home/jenkins/HelloWorld
          state: absent
-         #recurse: yes
+
+- name: Deployment
+  hosts: docker
+
+  tasks:
+     - name: start docker container (production)
+       shell: docker start productionci
+     - name: stop docker container (production)
+       shell: docker stop productionci
+
 
