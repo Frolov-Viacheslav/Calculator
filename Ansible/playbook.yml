@@ -41,8 +41,7 @@
   tasks:
      - name: start docker container (production)
        shell: docker start productionci
-     #- name: stop docker container (production)
-      # shell: docker stop productionci
+     
 - name: Deployment
   hosts: production
   tasks:
@@ -50,8 +49,11 @@
        copy:
          src: /var/jenkins_home/Hello.jar
          dest: /home/jenkins
-     - name: Run app
-       shell: java -jar Hello.jar
-            
+         
+- name: Stop production
+  hosts: docker
+  tasks:     
+     - name: stop docker container (production)
+       shell: docker stop productionci
 
 
