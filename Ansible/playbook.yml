@@ -1,7 +1,6 @@
 ---
 - name: Build
-  hosts: jenkins
-
+  hosts: slave1
 
   tasks:
      - git:
@@ -43,13 +42,20 @@
          path: /home/jenkins/HelloWorld
          state: absent
 
-- name: Deployment
+- name: Launch production
   hosts: docker
-
   tasks:
      - name: start docker container (production)
        shell: docker start productionci
-     - name: stop docker container (production)
-       shell: docker stop productionci
+     #- name: stop docker container (production)
+      # shell: docker stop productionci
+- name: Deployment
+  hosts: production
+  tasks:
+     - name: Copy jar file to production
+       copy:
+         src: /var/jenkins_home/Hello.jar
+         dest: /home/jenkins
+            
 
 
