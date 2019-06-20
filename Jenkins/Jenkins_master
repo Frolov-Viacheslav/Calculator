@@ -20,7 +20,7 @@ pipeline {
           //  rm -r HelloWorld
             
           // '''
-        sh 'ansible-pull -U git@github.com:Frolov-Viacheslav/HelloWorld.git Ansible/playbook.yml'
+        sh 'ansible-pull -U git@github.com:Frolov-Viacheslav/HelloWorld.git -l jenkins Ansible/playbook.yml'
       }
     }
   }
