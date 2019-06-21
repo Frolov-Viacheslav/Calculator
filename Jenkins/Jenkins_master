@@ -37,6 +37,20 @@ pipeline {
             cd ..
             rm -r HelloWorld
             '''
+          // отправим последние 50 строк неудачной сборки
+    script {
+      env.logs = currentBuild.rawBuild.getLog(50).join('\n')
+    }
+    emailext (
+      subject: "FAILURE: ${env.JOB_NAME} Build # ${env.BUILD_NUMBER} ",
+      body: """FAILED: Job ${env.JOB_NAME} [${env.BUILD_NUMBER}]':
+Check console output at ${env.BUILD_URL}console
+
+...
+${env.logs}
+""",
+      to: 'v.frolov@csn.khai.edu'
+    )
         }
     }
 }
