@@ -37,24 +37,3 @@
          path: /home/jenkins/HelloWorld
          state: absent
 
-- name: Launch production
-  hosts: docker
-  tasks:
-     - name: start docker container (production)
-       shell: docker start productionci
-     
-- name: Deployment
-  hosts: production
-  tasks:
-     - name: Copy jar file to production
-       copy:
-         src: /var/jenkins_home/Hello.jar
-         dest: /home/jenkins
-         
-- name: Stop production
-  hosts: docker
-  tasks:     
-     - name: stop docker container (production)
-       shell: docker stop productionci
-
-
