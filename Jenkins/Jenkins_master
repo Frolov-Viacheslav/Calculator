@@ -45,7 +45,8 @@ pipeline {
       Check console output at ${env.BUILD_URL}console
       """,
       to: 'v.frolov@csn.khai.edu',
-      from: 'slava.frolov777@gmail.com'
+      from: 'slava.frolov777@gmail.com',
+      recipientProviders: [[$class: 'DevelopersRecipientProvider']]
     )
         }
     }
