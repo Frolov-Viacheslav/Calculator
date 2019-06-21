@@ -37,15 +37,25 @@ pipeline {
             cd ..
             rm -r HelloWorld
             '''
-          // отправим последние 50 строк неудачной сборки
 
     emailext (
       subject: "FAILURE: ${env.JOB_NAME} Build # ${env.BUILD_NUMBER} ",
-      body: """FAILED: Job ${env.JOB_NAME} [${env.BUILD_NUMBER}]':
+      body: """FAILED: Job ${env.JOB_NAME} [${env.BUILD_NUMBER}]'. Your last commit has been canceled.
       Check console output at ${env.BUILD_URL}console
       """,
       to: 'v.frolov@csn.khai.edu',
-      from: 'slava.frolov777@gmail.com',
+      recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+    )
+        }
+    // Выполнит, если сборка удалась
+    success{
+      
+    emailext (
+      subject: "SUCCESS: ${env.JOB_NAME} Build # ${env.BUILD_NUMBER} ",
+      body: """SUCCESS: Job ${env.JOB_NAME} [${env.BUILD_NUMBER}]':
+      Check console output at ${env.BUILD_URL}console
+      """,
+      to: 'v.frolov@csn.khai.edu',
       recipientProviders: [[$class: 'DevelopersRecipientProvider']]
     )
         }
