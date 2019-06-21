@@ -1,5 +1,5 @@
 class HelloWorld {
     public static void main(String[] args) {
-        System.out.println("Dev 2 !");
+        System.out.println("Test pull request");
     }
 }
