@@ -6,6 +6,7 @@
      - git:
          repo: "https://github.com/Frolov-Viacheslav/HelloWorld.git"
          dest: /home/jenkins/HelloWorld
+         version: dev
      - name: Compiling java app
        shell: javac HelloWorld.java
        args:
