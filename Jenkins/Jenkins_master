@@ -1,5 +1,5 @@
 #!groovy
-//properties([disableConcurrentBuilds()])
+properties([disableConcurrentBuilds()])
 
 pipeline {
   agent{
@@ -20,7 +20,6 @@ pipeline {
             rm -r HelloWorld
             
            '''
-        //sh 'ansible-pull -U git@github.com:Frolov-Viacheslav/HelloWorld.git -l localhost Ansible/playbook.yml'
       }
     }
   }
