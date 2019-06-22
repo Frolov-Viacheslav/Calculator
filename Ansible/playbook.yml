@@ -5,7 +5,7 @@
   tasks:
      - git:
          repo: "https://github.com/Frolov-Viacheslav/Calculator.git"
-         dest: /home/jenkins/HelloWorld
+         dest: /home/jenkins/Calculator
          version: dev
      - name: Compiling java app
        shell: mvn package
@@ -20,7 +20,7 @@
     #   args:
        #  chdir: /home/jenkins/HelloWorld/
      - name: Move file and allow execute
-       shell: mv /home/jenkins/Calculator/target/Calculator-1.0-SNAPSHOT.jar /home/jenkins/Calculator.jar && chmod +x /home/jenkins/Calculator-1.0-SNAPSHOT.jar
+       shell: mv /home/jenkins/Calculator/target/Calculator-1.0-SNAPSHOT.jar /home/jenkins/ && chmod +x /home/jenkins/Calculator-1.0-SNAPSHOT.jar
      - name: Copy file to jenkins master
        shell: cp Calculator-1.0-SNAPSHOT.jar /var/jenkins_home
        args:
