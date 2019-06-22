@@ -4,36 +4,36 @@
 
   tasks:
      - git:
-         repo: "https://github.com/Frolov-Viacheslav/HelloWorld.git"
+         repo: "https://github.com/Frolov-Viacheslav/Calculator.git"
          dest: /home/jenkins/HelloWorld
          version: dev
      - name: Compiling java app
-       shell: javac HelloWorld.java
+       shell: mvn package
        args:
-         chdir: /home/jenkins/HelloWorld/
-     - lineinfile:
-           dest: /home/jenkins/HelloWorld/MANIFEST.MF
-           line: 'Main-class: HelloWorld'
-           create: yes
-     - name: Creating jar file
-       shell: jar cvmf MANIFEST.MF Hello.jar HelloWorld.class
-       args:
-         chdir: /home/jenkins/HelloWorld/
+         chdir: /home/jenkins/Calculator/
+     #- lineinfile:
+       #    dest: /home/jenkins/HelloWorld/MANIFEST.MF
+        #   line: 'Main-class: HelloWorld'
+        #   create: yes
+     #- name: Creating jar file
+     #  shell: jar cvmf MANIFEST.MF Hello.jar HelloWorld.class
+    #   args:
+       #  chdir: /home/jenkins/HelloWorld/
      - name: Move file and allow execute
-       shell: mv /home/jenkins/HelloWorld/Hello.jar /home/jenkins/Hello.jar && chmod +x /home/jenkins/Hello.jar
+       shell: mv /home/jenkins/Calculator/target/Calculator.jar /home/jenkins/Calculator.jar && chmod +x /home/jenkins/Calculator.jar
      - name: Copy file to jenkins master
-       shell: cp Hello.jar /var/jenkins_home
+       shell: cp Calculator.jar /var/jenkins_home
        args:
          chdir: /home/jenkins/
-     - name: Run app
-       shell: java -jar Hello.jar
-       register: shell_result
-       args:
-         chdir: /home/jenkins/ 
-     - debug:
-         var: shell_result.stdout_lines
+     #- name: Run app
+      # shell: java -jar Calculator.jar
+       #register: shell_result
+       #rgs:
+        # chdir: /home/jenkins/ 
+     #- debug:
+      #   var: shell_result.stdout_lines
      - name: Delete git directory (HelloWorld)
        file:
-         path: /home/jenkins/HelloWorld
+         path: /home/jenkins/Calculator
          state: absent
 
