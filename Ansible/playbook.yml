@@ -10,7 +10,7 @@
   tasks:
      - name: Copy jar file to production
        copy:
-         src: /var/jenkins_home/Hello.jar
+         src: /var/jenkins_home/Calculator-1.0-SNAPSHOT.jar
          dest: /home/jenkins
          
 - name: Stop production
