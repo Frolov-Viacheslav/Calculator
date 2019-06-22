@@ -9,15 +9,15 @@ pipeline {
     timestamps()
   }
   stages {
-    stage('Build app') {
+    stage('Send app') {
       steps {
         sh '''
-            if  [ -d HelloWorld ]; then
-            rm -r HelloWorld
+            if  [ -d Calculator ]; then
+            rm -r Calculator
             fi
-            git clone "git@github.com:Frolov-Viacheslav/HelloWorld.git"
-            ansible-playbook HelloWorld/Ansible/playbook.yml
-            rm -r HelloWorld
+            git clone "git@github.com:Frolov-Viacheslav/Calculator.git"
+            ansible-playbook Calculator/Ansible/playbook.yml
+            rm -r Calculator
             
            '''
       }
