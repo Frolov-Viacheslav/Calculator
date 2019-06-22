@@ -15,9 +15,9 @@ pipeline {
             if  [ -d HelloWorld ]; then
             rm -r HelloWorld
             fi
-            git clone "git@github.com:Frolov-Viacheslav/HelloWorld.git" --branch dev
-            ansible-playbook HelloWorld/Ansible/playbook.yml
-            rm -r HelloWorld
+            git clone "git@github.com:Frolov-Viacheslav/Calculator.git" --branch dev
+            ansible-playbook Calculator/Ansible/playbook.yml
+            rm -r Calculator
             
            '''
       }
@@ -27,15 +27,15 @@ pipeline {
         // Выполняет в конце сборки (если сборка не удалась)
         failure { 
             sh '''
-            if  [ -d HelloWorld ]; then
-            rm -r HelloWorld
+            if  [ -d Calculator ]; then
+            rm -r Calculator
             fi
-            git clone "git@github.com:Frolov-Viacheslav/HelloWorld.git" --branch dev
-            cd HelloWorld
+            git clone "git@github.com:Frolov-Viacheslav/Calculator.git" --branch dev
+            cd Calculator
             git reset --hard HEAD~
             git push -f
             cd ..
-            rm -r HelloWorld
+            rm -r Calculator
             '''
 
     emailext (
