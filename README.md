@@ -1,5 +1,5 @@
 # Calculator
-Maven 
+Maven app 
 # Jenkins
 Pipeline - Jenkinsfile
 # Development branch
