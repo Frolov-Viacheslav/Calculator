@@ -10,7 +10,7 @@ pipeline {
   stages {
        stage('launch slave') {
       steps {
-            build 'Ansible_master'
+            build 'Dev_master'
       }
     }
   }
