@@ -12,7 +12,7 @@
        copy:
          src: /var/jenkins_home/Calculator-1.0-SNAPSHOT.jar
          dest: /home/jenkins
-         mode +x
+         mode u+x,g+x,o+x
          
 - name: Stop production
   hosts: docker
