@@ -1,6 +1,6 @@
 # Calculator
 Maven app 
 # Jenkins
-Pipeline - Jenkinsfile
+Pipelines - Jenkins_master and Jenkins_slave01
 # Development branch
 Push all changes here!!!
