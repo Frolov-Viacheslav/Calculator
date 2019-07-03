@@ -11,7 +11,10 @@ pipeline {
        stage('launch slave') {
       steps {
             build 'Dev_master'
-            sh 'ls'
+            sh '''
+            cd /jenkins/home
+            ls
+            '''
             archiveArtifacts artifacts: 'Calculator-1.0-SNAPSHOT.jar', fingerprint: true
       }
     }
