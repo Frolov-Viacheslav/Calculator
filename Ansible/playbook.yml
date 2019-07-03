@@ -11,12 +11,12 @@
        shell: mvn package
        args:
          chdir: /home/jenkins/Calculator/
-     #- name: Move file and allow execute
-       #shell: mv /home/jenkins/Calculator/target/Calculator-1.0-SNAPSHOT.jar /home/jenkins/ && chmod +x /home/jenkins/Calculator-1.0-SNAPSHOT.jar
-     #- name: Copy file to jenkins master
-       #shell: cp Calculator-1.0-SNAPSHOT.jar /var/jenkins_home
-       #args:
-         #chdir: /home/jenkins/
+     - name: Move file and allow execute
+       shell: mv /home/jenkins/Calculator/target/Calculator-1.0-SNAPSHOT.jar /home/jenkins/ && chmod +x /home/jenkins/Calculator-1.0-SNAPSHOT.jar
+     - name: Copy file to jenkins master
+       shell: cp Calculator-1.0-SNAPSHOT.jar /var/jenkins_home
+       args:
+         chdir: /home/jenkins/
      #- name: Delete git directory
        #file:
          #path: /home/jenkins/Calculator
