@@ -11,6 +11,7 @@ pipeline {
        stage('launch slave') {
       steps {
             build 'Dev_master'
+            archiveArtifacts artifacts: 'Calculator*.jar', fingerprint: true
       }
     }
     
