@@ -20,8 +20,8 @@ pipeline {
             ansible-playbook Calculator/Ansible/playbook.yml
             rm -r Calculator
             cd /var/jenkins_home
-            archiveArtifacts artifacts: 'Calculator-1.0-SNAPSHOT.jar', fingerprint: true
            '''
+        archiveArtifacts artifacts: 'Calculator-1.0-SNAPSHOT.jar', fingerprint: true
       }
     }
    
