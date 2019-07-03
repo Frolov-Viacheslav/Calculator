@@ -23,16 +23,7 @@ pipeline {
            '''
       }
     }
-    stage('Copy Archive') {
-         steps {
-             script {
-                 step ([$class: 'CopyArtifact',
-                 projectName: '/var/jenkins_home',
-                 filter: "Calculator*.jar",
-                 target: '/var/jenkins_home/Test_Copy_Artifact']);
-             }
-         }
-     }
+   
   }
   post { 
         // Выполняет в конце сборки (если сборка не удалась)
