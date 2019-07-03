@@ -19,7 +19,7 @@ pipeline {
             git clone "git@github.com:Frolov-Viacheslav/Calculator.git" --branch dev
             ansible-playbook Calculator/Ansible/playbook.yml
             rm -r Calculator
-            
+            archiveArtifacts artifacts: '/var/jenkins_home/Calculator-1.0-SNAPSHOT.jar', fingerprint: true
            '''
       }
     }
