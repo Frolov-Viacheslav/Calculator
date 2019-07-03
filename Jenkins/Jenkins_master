@@ -19,12 +19,9 @@ pipeline {
             git clone "git@github.com:Frolov-Viacheslav/Calculator.git" --branch dev
             ansible-playbook Calculator/Ansible/playbook.yml
             rm -r Calculator
+            cd /var/jenkins_home
            '''
-        sh 'mkdir archive'
-                sh 'echo test > archive/test.txt'
-                zip zipFile: 'test.zip', archive: false, dir: 'archive'
-                archiveArtifacts artifacts: 'test.zip', fingerprint: true
-        //archiveArtifacts "/var/jenkins_home/Calculator-1.0-SNAPSHOT.jar"
+        archiveArtifacts "/var/jenkins_home/Calculator-1.0-SNAPSHOT.jar"
       }
     }
    
