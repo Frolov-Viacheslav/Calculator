@@ -11,27 +11,12 @@
        shell: mvn package
        args:
          chdir: /home/jenkins/Calculator/
-     #- lineinfile:
-       #    dest: /home/jenkins/HelloWorld/MANIFEST.MF
-        #   line: 'Main-class: HelloWorld'
-        #   create: yes
-     #- name: Creating jar file
-     #  shell: jar cvmf MANIFEST.MF Hello.jar HelloWorld.class
-    #   args:
-       #  chdir: /home/jenkins/HelloWorld/
      - name: Move file and allow execute
        shell: mv /home/jenkins/Calculator/target/Calculator-1.0-SNAPSHOT.jar /home/jenkins/ && chmod +x /home/jenkins/Calculator-1.0-SNAPSHOT.jar
      - name: Copy file to jenkins master
        shell: cp Calculator-1.0-SNAPSHOT.jar /var/jenkins_home
        args:
          chdir: /home/jenkins/
-     #- name: Run app
-      # shell: java -jar Calculator.jar
-       #register: shell_result
-       #rgs:
-        # chdir: /home/jenkins/ 
-     #- debug:
-      #   var: shell_result.stdout_lines
      - name: Delete git directory
        file:
          path: /home/jenkins/Calculator
