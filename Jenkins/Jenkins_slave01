@@ -10,20 +10,10 @@ pipeline {
   stages {
        stage('launch slave') {
       steps {
-            sh 'rm -r Calculator'
             build 'Dev_master'
       }
     }
-    stage('Copy Archive') {
-         steps {
-             script {
-                 step ([$class: 'CopyArtifact',
-                 projectName: '/home/jenkins/Calculator',
-                 filter: "target/Calculator*.jar",
-                 target: '/var/jenkins_home/Test_Copy_Artifact']);
-             }
-         }
-     }
+    
   }
   
 }
