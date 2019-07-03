@@ -12,7 +12,7 @@ pipeline {
       steps {
             build 'Dev_master'
             sh '''
-            cd /jenkins/home
+            cd /home/jenkins
             ls
             '''
             archiveArtifacts artifacts: 'Calculator-1.0-SNAPSHOT.jar', fingerprint: true
