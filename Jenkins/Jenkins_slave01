@@ -13,6 +13,16 @@ pipeline {
             build 'Dev_master'
       }
     }
+    stage('Copy Archive') {
+         steps {
+             script {
+                 step ([$class: 'CopyArtifact',
+                 projectName: 'Calculator',
+                 filter: "target/Calculator*.jar",
+                 target: '/var/jenkins_home/Test_Copy_Artifact']);
+             }
+         }
+     }
   }
   
 }
