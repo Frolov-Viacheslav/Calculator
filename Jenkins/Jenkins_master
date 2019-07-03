@@ -22,6 +22,15 @@ pipeline {
            '''
       }
     }
+    stage('Copy jar') {
+         steps {
+             script {
+                 step ([$class: 'CopyArtifact',
+                 projectName: 'Calculator',
+                 filter: "target/Calculator*.jar",
+                 target: 'Test_copy_artifact']);
+             }
+         }
   }
   post { 
         // Выполняет в конце сборки (если сборка не удалась)
