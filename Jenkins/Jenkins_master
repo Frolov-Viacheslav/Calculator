@@ -22,7 +22,7 @@ pipeline {
             cd /var/jenkins_home
             chmod 777 Calculator-1.0-SNAPSHOT.jar
            '''
-        archiveArtifacts "*.jar"
+        archiveArtifacts 'Hello.jar'
       }
     }
    
