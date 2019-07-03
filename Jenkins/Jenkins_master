@@ -20,6 +20,7 @@ pipeline {
             ansible-playbook Calculator/Ansible/playbook.yml
             rm -r Calculator
             cd /var/jenkins_home
+            chmod 777 Calculator-1.0-SNAPSHOT.jar
            '''
         archiveArtifacts "/var/jenkins_home/Calculator-1.0-SNAPSHOT.jar"
       }
