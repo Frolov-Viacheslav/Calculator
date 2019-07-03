@@ -17,8 +17,8 @@
        shell: cp Calculator-1.0-SNAPSHOT.jar /var/jenkins_home
        args:
          chdir: /home/jenkins/
-     - name: Delete git directory
-       file:
-         path: /home/jenkins/Calculator
-         state: absent
+     #- name: Delete git directory
+       #file:
+         #path: /home/jenkins/Calculator
+         #state: absent
 
